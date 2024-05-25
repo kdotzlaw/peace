@@ -7,7 +7,7 @@ from PyQt6.QtCore import *
 from home import Home
 
 
-class Window(QDialog):
+class Window(QDialog): #has to be QDialog for form to show
     def __init__(self):
         super(Window, self).__init__()
         # create this window
@@ -28,8 +28,11 @@ class Window(QDialog):
 
     def onLoginClick(self):
         print("clicked")
+        #if login info is verified
         self.home = Home()
         self.home.show()
+        #close login window
+        gui.close()
 
     def createForm(self):
         layout = QFormLayout()
