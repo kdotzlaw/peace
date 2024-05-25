@@ -7,9 +7,17 @@ from PyQt6.QtCore import *
 class Home(QMainWindow):
     def __init__(self):
         super(Home, self).__init__()
-        self.home = None
+        #self.home = None
         self.label = QLabel("Home")
-        self.setCentralWidget(self.label)
+        #set window size to be screen width
+        self.showMaximized()
+        #create widget collection
+        layout = QVBoxLayout()
+        text = QLabel("Test",alignment=Qt.AlignmentFlag.AlignCenter)
+        layout.addWidget(text)
+        widget = QWidget()
+        widget.setLayout(layout)
+        self.setCentralWidget(widget)
 
 
 if __name__ == "__main__":

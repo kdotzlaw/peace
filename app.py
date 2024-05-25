@@ -28,7 +28,14 @@ class Window(QDialog): #has to be QDialog for form to show
 
     def onLoginClick(self):
         print("clicked")
+        #get input
+        usr = self.username.text()
+        pwd = self.password.text()
+        host = self.host.text()
+        db = self.db.text()
+        print("Username: "+usr+"\nPassword: "+pwd+"\nHost: "+host+"\nDB: "+db)
         #if login info is verified
+
         self.home = Home()
         self.home.show()
         #close login window
@@ -37,10 +44,15 @@ class Window(QDialog): #has to be QDialog for form to show
     def createForm(self):
         layout = QFormLayout()
         bLogin = QPushButton("Login", self)
-        layout.addRow(QLabel("Username:"), QLineEdit())
-        layout.addRow(QLabel("Password:"), QLineEdit())
-        layout.addRow(QLabel("Host:"), QLineEdit())
-        layout.addRow(QLabel("Database:"), QLineEdit())
+        self.username = QLineEdit()
+        self.password = QLineEdit()
+        self.host = QLineEdit()
+        self.db = QLineEdit()
+        #layout.addRow(QLabel("Username:"), QLineEdit())
+        layout.addRow(QLabel("Username:"), self.username)
+        layout.addRow(QLabel("Password:"), self.password)
+        layout.addRow(QLabel("Host:"), self.host)
+        layout.addRow(QLabel("Database:"), self.db)
         layout.addRow(bLogin)
         bLogin.clicked.connect(self.onLoginClick)
         # set layout
