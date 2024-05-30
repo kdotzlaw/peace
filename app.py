@@ -5,7 +5,7 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtCore import *
 
 from home import Home
-
+from db import init
 
 class Window(QDialog): #has to be QDialog for form to show
     def __init__(self):
@@ -33,13 +33,16 @@ class Window(QDialog): #has to be QDialog for form to show
         pwd = self.password.text()
         host = self.host.text()
         db = self.db.text()
-        print("Username: "+usr+"\nPassword: "+pwd+"\nHost: "+host+"\nDB: "+db)
+        #print("Username: "+usr+"\nPassword: "+pwd+"\nHost: "+host+"\nDB: "+db)
         #if login info is verified
-
+        # on login, attempt connection
+        init(self.username.text(), self.password.text(), self.host.text(), self.db.text())
         self.home = Home()
         self.home.show()
-        #close login window
+        # close login window
         gui.close()
+            #popup of incorrect login info
+
 
     def createForm(self):
         layout = QFormLayout()
