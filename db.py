@@ -342,23 +342,78 @@ def getGifts(name):
             print(x)
 
 
+# MIGHT MAKE MORE FLEXIBLE WITH UI
+'''
+getBirthdaysBetween()
+INPUT: datetime 1, datetime 2
+OUTPUT: List of all people with birthdays between date1 and date2
+'''
+'''
+getContactWithSkills()
+INPUT: list of skills []
+OUTPUT: All (name, email, phone) records with skills that match input
+'''
+'''
+getContactWithInterests()
+INPUT: list of interests []
+OUTPUT: All (name, email, phone) records with skills that match input
+'''
+'''
+getContactWithGifts()
+INPUT: list of spiritual gifts []
+OUTPUT: All (name, email, phone) records with skills that match input
+'''
+'''
+getContactWithHobbies()
+INPUT: list of skills []
+OUTPUT: All (name, email, phone) records with skills that match input
+'''
+
 # SETTERS
+'''
+addNewRecord()
+INPUT: fName (str, MAN.), lName (str, MAN.), email (str, MAN.), phone (str), birthday (datetime; year-month-day), marriageStatus (str)
+    partner (str), anniversary (datetime; year-month-day), churchbckg(str), baptism (datetime; year-month-day), 
+    confirmation (datetime; year-month-day),children (list [str]), history (list [str]), skills (list[str]), interests (list[str]), 
+    gifts (list[str]), hobbies (list[str]), qualifiedFor (list[str]), member(int [0,1], MAN.)
+OUTPUT: Success if given name is not already in db, failure otherwise
+'''
+
+
+def addNewRecord(fName, lName, email, phone, birthday, marriageStatus, partner, anniversary, church, baptism,
+                 confirmation, children, history, skills, interests, gifts, hobbies, qualifiedFor, member):
+    if fName=="" or fName==None:
+        print("Firstname is required")
+    elif lName=="" or lName==None:
+        print("Lastname is required")
+    elif email=="" or email==None:
+        print("Email is required")
+    elif member == None:
+        print("Member status must be either 0 (non member) or 1 (member)")
+    else:
+        stmt = "INSERT INTO volunteers VALUES (fName,lName, email, phone, birthday, marriageStatus,partner, anniversary, church, baptism, confirmation," \
+           "children, history, skills, interests, gifts, hobbies, qualifiedFor, member);"
+        cursor.execute(stmt)
+    #result = cursor.fetchall()
 
 
 # -----JOBS TABLE-----#
 
 if __name__ == '__main__':
-    username=input("Enter username: ")
-    password=input("Enter password: ")
-    host = input("Enter host: ")
-    database = input("Enter database: ")
-    # init cnxn to db
-    cnxn = mysql.connect(
-        host=host,
-        user=username,
-        password=password,
-        database=database
-    )
-    print(cnxn)
-    # init cursor
-    cursor = cnxn.cursor()
+    try:
+        username = input("Enter username: ")
+        password = input("Enter password: ")
+        host = input("Enter host: ")
+        database = input("Enter database: ")
+        # init cnxn to db
+        cnxn = mysql.connect(
+            host=host,
+            user=username,
+            password=password,
+            database=database
+        )
+        print(cnxn)
+        # init cursor
+        cursor = cnxn.cursor()
+    except ConnectionError:
+        print("cnxn failed, we'll  get em nexttime")
