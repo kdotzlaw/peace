@@ -396,6 +396,65 @@ def addNewRecord(fName, lName, email, phone, birthday, marriageStatus, partner, 
         cursor.execute(stmt)
     #result = cursor.fetchall()
 
+def updateEmail(name, nEmail):
+    n = name.split(" ")
+    stmt = "UPDATE volunteers SET vEmail = %s WHERE vFName=%s AND vLName=%s;"
+    cursor.execute(stmt,nEmail, n[0], n[1] )
+
+def updatePhone(name, nPhone):
+    n = name.split(" ")
+    stmt = "UPDATE volunteers SET vPhone = %s WHERE vFName=%s AND vLName=%s;"
+    cursor.execute(stmt,nPhone, n[0], n[1] )
+
+def updateName (name, nName):
+    n = name.split(" ")
+    nn = nName.split(" ")
+    stmt = "UPDATE volunteers SET vFName = %s, vLName = %s WHERE vFName=%s AND vLName=%s;"
+    cursor.execute(stmt, nn[0], nn[1], n[0], n[1])
+
+def updateMarriage(name, status, partner, anniversary):
+    n = name.split(" ")
+    stmt = "UPDATE volunteers SET vMarraigeStatus = %s, vPartner = %s, vAnniversary = %s WHERE vFName=%s AND vLName=%s;"
+    cursor.execute(stmt, status, partner, anniversary, n[0], n[1])
+
+def updateBaptism (name, baptism):
+    n = name.split(" ")
+    stmt = "UPDATE volunteers SET vDateBaptism = %s WHERE vFName=%s AND vLName=%s;"
+    cursor.execute(stmt, baptism, n[0], n[1])
+
+def updateConfirmation(name, conf):
+    n = name.split(" ")
+    stmt = "UPDATE volunteers SET vDateConfirmation = %s WHERE vFName=%s AND vLName=%s;"
+    cursor.execute(stmt, conf, n[0], n[1])
+
+def updateChildren(name, children):
+    # get current children and append new to list
+    n = name.split(" ")
+    current = "SELECT vListChildren FROM volunteers WHERE vFName=%s AND vLName=%s;"
+    cursor.execute(current, n[0],n[1])
+    result = cursor.fetchall()
+    for x in result:
+        if x not in children:
+            children.append()
+    stmt = "UPDATE volunteers SET vListChildren=%s WHERE vFName=%s AND vLName=%s;"
+    cursor.execute(stmt, children, n[0], n[1])
+
+def updateQualifications(name, qual):
+    # get current qualifications and append new to list
+    n = name.split(" ")
+    current = "SELECT vQualifiedFor FROM volunteers WHERE vFName=%s AND vLName=%s;"
+    cursor.execute(current, n[0], n[1])
+    result = cursor.fetchall()
+    for x in result:
+        if x not in qual:
+            qual.append()
+    stmt = "UPDATE volunteers SET vQualifiedFor=%s WHERE vFName=%s AND vLName=%s;"
+    cursor.execute(stmt, qual, n[0], n[1])
+
+def updateMemberStatus(name, status):
+    n = name.split(" ")
+    stmt = "UPDATE volunteers SET vMember=%s WHERE vFName=%s AND vLName=%s;"
+    cursor.execute(stmt, status, n[0], n[1])
 
 # -----JOBS TABLE-----#
 
