@@ -23,6 +23,9 @@ The goal of this website redesign was to create an elevated user experience for 
  
 ## Database Application
 ### Frontend Development
+- ReactJS
 ### Backend Development   
+- Flask API and Python
+#### API Endpoints
   
 
