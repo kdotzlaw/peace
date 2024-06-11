@@ -342,169 +342,23 @@ def getGifts(name):
             print(x)
 
 
-# MIGHT MAKE MORE FLEXIBLE WITH UI
-'''
-getBirthdaysBetween()
-INPUT: datetime 1, datetime 2
-OUTPUT: List of all people with birthdays between date1 and date2
-'''
-'''
-getContactWithSkills()
-INPUT: list of skills []
-OUTPUT: All (name, email, phone) records with skills that match input
-'''
-'''
-getContactWithInterests()
-INPUT: list of interests []
-OUTPUT: All (name, email, phone) records with skills that match input
-'''
-'''
-getContactWithGifts()
-INPUT: list of spiritual gifts []
-OUTPUT: All (name, email, phone) records with skills that match input
-'''
-'''
-getContactWithHobbies()
-INPUT: list of skills []
-OUTPUT: All (name, email, phone) records with skills that match input
-'''
-
 # SETTERS
-'''
-addNewRecord()
-INPUT: fName (str, MAN.), lName (str, MAN.), email (str, MAN.), phone (str), birthday (datetime; year-month-day), marriageStatus (str)
-    partner (str), anniversary (datetime; year-month-day), churchbckg(str), baptism (datetime; year-month-day), 
-    confirmation (datetime; year-month-day),children (list [str]), history (list [str]), skills (list[str]), interests (list[str]), 
-    gifts (list[str]), hobbies (list[str]), qualifiedFor (list[str]), member(int [0,1], MAN.)
-OUTPUT: Success if given name is not already in db, failure otherwise
-'''
-
-
-def addNewRecord(fName, lName, email, phone, birthday, marriageStatus, partner, anniversary, church, baptism,
-                 confirmation, children, history, skills, interests, gifts, hobbies, qualifiedFor, member):
-    if fName == "" or fName == None:
-        print("Firstname is required")
-    elif lName == "" or lName == None:
-        print("Lastname is required")
-    elif email == "" or email == None:
-        print("Email is required")
-    elif member == None:
-        print("Member status must be either 0 (non member) or 1 (member)")
-    else:
-        stmt = "INSERT INTO volunteers VALUES (fName,lName, email, phone, birthday, marriageStatus,partner, anniversary, church, baptism, confirmation," \
-               "children, history, skills, interests, gifts, hobbies, qualifiedFor, member);"
-        cursor.execute(stmt)
-    # result = cursor.fetchall()
-
-
-def updateEmail(name, nEmail):
-    n = name.split(" ")
-    stmt = "UPDATE volunteers SET vEmail = %s WHERE vFName=%s AND vLName=%s;"
-    cursor.execute(stmt, nEmail, n[0], n[1])
-
-
-def updatePhone(name, nPhone):
-    n = name.split(" ")
-    stmt = "UPDATE volunteers SET vPhone = %s WHERE vFName=%s AND vLName=%s;"
-    cursor.execute(stmt, nPhone, n[0], n[1])
-
-
-def updateName(name, nName):
-    n = name.split(" ")
-    nn = nName.split(" ")
-    stmt = "UPDATE volunteers SET vFName = %s, vLName = %s WHERE vFName=%s AND vLName=%s;"
-    cursor.execute(stmt, nn[0], nn[1], n[0], n[1])
-
-
-def updateMarriage(name, status, partner, anniversary):
-    n = name.split(" ")
-    stmt = "UPDATE volunteers SET vMarraigeStatus = %s, vPartner = %s, vAnniversary = %s WHERE vFName=%s AND vLName=%s;"
-    cursor.execute(stmt, status, partner, anniversary, n[0], n[1])
-
-
-def updateBaptism(name, baptism):
-    n = name.split(" ")
-    stmt = "UPDATE volunteers SET vDateBaptism = %s WHERE vFName=%s AND vLName=%s;"
-    cursor.execute(stmt, baptism, n[0], n[1])
-
-
-def updateConfirmation(name, conf):
-    n = name.split(" ")
-    stmt = "UPDATE volunteers SET vDateConfirmation = %s WHERE vFName=%s AND vLName=%s;"
-    cursor.execute(stmt, conf, n[0], n[1])
-
-
-def updateChildren(name, children):
-    # get current children and append new to list
-    n = name.split(" ")
-    current = "SELECT vListChildren FROM volunteers WHERE vFName=%s AND vLName=%s;"
-    cursor.execute(current, n[0], n[1])
-    result = cursor.fetchall()
-    for x in result:
-        if x not in children:
-            children.append()
-    stmt = "UPDATE volunteers SET vListChildren=%s WHERE vFName=%s AND vLName=%s;"
-    cursor.execute(stmt, children, n[0], n[1])
-
-
-def updateQualifications(name, qual):
-    # get current qualifications and append new to list
-    n = name.split(" ")
-    current = "SELECT vQualifiedFor FROM volunteers WHERE vFName=%s AND vLName=%s;"
-    cursor.execute(current, n[0], n[1])
-    result = cursor.fetchall()
-    for x in result:
-        if x not in qual:
-            qual.append()
-    stmt = "UPDATE volunteers SET vQualifiedFor=%s WHERE vFName=%s AND vLName=%s;"
-    cursor.execute(stmt, qual, n[0], n[1])
-
-
-def updateMemberStatus(name, status):
-    n = name.split(" ")
-    stmt = "UPDATE volunteers SET vMember=%s WHERE vFName=%s AND vLName=%s;"
-    cursor.execute(stmt, status, n[0], n[1])
 
 
 # -----JOBS TABLE-----#
 
-'''if __name__ == '__main__':
-    try:
-        username = input("Enter username: ")
-        password = input("Enter password: ")
-        host = input("Enter host: ")
-        database = input("Enter database: ")
-        # init cnxn to db
-        cnxn = mysql.connect(
-            host=host,
-            user=username,
-            password=password,
-            database=database
-        )
-        print(cnxn)
-        # init cursor
-        cursor = cnxn.cursor()
-    except ConnectionError:
-        print("cnxn failed, we'll  get em nexttime")
-'''
-
-
-def init(user, p, host, db):
-    print("into init")
-    try:
-        username = user
-        password = p
-        host = host
-        database = db
-        # init cnxn to db
-        cnxn = mysql.connect(
-            user=username,
-            password=password,
-            host=host,
-            database=database
-        )
-        print(cnxn)
-        # init cursor
-        cursor = cnxn.cursor()
-    except Exception:
-        print("cnxn failed, we'll  get em nexttime")
+if __name__ == '__main__':
+    username=input("Enter username: ")
+    password=input("Enter password: ")
+    host = input("Enter host: ")
+    database = input("Enter database: ")
+    # init cnxn to db
+    cnxn = mysql.connect(
+        host=host,
+        user=username,
+        password=password,
+        database=database
+    )
+    print(cnxn)
+    # init cursor (to exe queries)
+    cursor = cnxn.cursor()
