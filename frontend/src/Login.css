@@ -10,22 +10,31 @@
     margin-right: -50%;
     transform: translate(-50%,-50%);
 
-    /**/
+    /*Colors and Borders*/
     background-color: #daf1fa;
-    padding: 10px;
+    padding: 20px;
+    border-radius: 25px;
 }
 
+label{
+    margin-left:20px;
+}
 
 .input-item{
     /*Align all input boxes*/
     display: flex;
     align-items: center;
+    margin-left: 50px;
     justify-content: space-between;
 }
 
-
 #btn-submit{
-    margin:20px;
-    text-align: center;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 110px;
+    margin-top: 5px;
+    padding: 2px;
 }
+
+

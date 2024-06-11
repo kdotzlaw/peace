@@ -71,6 +71,7 @@ function Login(){
                     />
                 </label>
                 <input
+                    className="input-item"
                     id ="btn-submit"
                     type="submit"/>
 
