@@ -1,7 +1,9 @@
 /*
     CSS for Login component
  */
-
+body{
+   background-color: #5b7381;
+}
 .container{
     /*center div in middle of page, regardless of size*/
     position: absolute;
