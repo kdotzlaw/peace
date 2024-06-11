@@ -1,25 +1,56 @@
+// hold current tab id
+let current = 0
+
 /*
- * Changes the current tab to
+ * Changes the current tab to 'name' if not already the current tab
  */
-function switchtab(name) {
-    console.log(name)
+function switchtab(name, id) {
+    if(id !== current){
+        current = id;
+        // get all components with  class == 'focused'
+        var toUnfocus = document.getElementsByClassName("focused")
+        // set 'focused' -> 'unfocused'
+        while(toUnfocus.length > 0){
+            toUnfocus[0].classList.add("unfocused")
+            toUnfocus[0].classList.remove("focused")
+        }
+        // get all components with a class == 'name'
+        var toFocus = document.getElementsByClassName("unfocused ".concat(name))
+        // set 'unfocused' -> 'focused'
+        while(toFocus.length > 0){
+            toFocus[0].classList.add("focused")
+            toFocus[0].classList.remove("unfocused")
+        }
+    } // else, stay on same tab
 }
 
 /*
  *
  */
-function Tab(name) {
+function Tab({name, focus, id}) {
+    /*let classes = "homeNavTab " + name
+    if(focus){
+        classes += " focused"
+    } else {
+        classes += " unfocused"
+    }*/
     return (
-        <div className="homeNavTab">
-            <button className="homeNavTabButton" onClick=switchtab{name}>{name}</button>
+        <div className={focus ? "homeNavTab " + name + " focused": "homeNavTab " + name + " unfocused"}>
+            <button className="homeNavTabButton" onClick={(event) => switchtab(name, id)}>{name}</button>
         </div>
     );
 }
 
-function HomeBody() {
+function HomeBody({name, focus}) {
+    let f;
+    if(focus){
+        f = " focused ".concat(name)
+    } else {
+        f = " unfocused ".concat(name)
+    }
     return (
-        <div className="homeBody">
-            <p>This is the home body</p>
+        <div className={"homeBody".concat(f)}>
+            <p>This is the home body for {name}</p>
         </div>
     );
 }
@@ -27,38 +58,34 @@ function HomeBody() {
 /*
  * Takes an array of tab names, returns a series of tabs
  */
-function buildTabs(arr) {
-    // start fragment
-    let ret = "<>"
-    for(let i = 0; i < arr.length; i++){
-        ret.push(<Tab name={arr[i]}/>)
-    }
-    // end fragment
-    ret.push("</>")
-    return ret;
+function buildTabs(tabdata) {
+
+    const tablist = tabdata.map(t => <Tab name={t.name} focus={t.focused} id={t.id}/>)
+    // return fragment
+    return <>{tablist}</>;
 }
 
 /*
  * Creates tab nav bar
  * Takes array of strings -> tab/table names
  */
-function Nav(arr) {
-
-  return (
-      <div className="homeNav">
-          {buildTabs(arr)}
-      </div>
-  );
+function Nav({tabdata}) {
+    return (
+        <div className="homeNav">
+            {buildTabs(tabdata)}
+        </div>
+    );
 }
 
 /*
  * Creates Home page elements for use after login
  */
-export default function Home(arr) {
-  return (
-    <div className="home">
-        <Nav arr={arr}></Nav>
-        <HomeBody></HomeBody>
-    </div>
-  );
+export default function Home({tabdata}) {
+    return (
+        <div className="home">
+            <Nav tabdata={tabdata}></Nav>
+            <HomeBody name={tabdata[0].name} focus={tabdata[0].focused}></HomeBody>
+            <HomeBody name={tabdata[1].name} focus={tabdata[1].focused}></HomeBody>
+        </div>
+    );
 }

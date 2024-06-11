@@ -3,6 +3,9 @@
 ## File System Structure
 
 ## Frontend
+- Elements that are in focus/being displayed will have the 'focused' class, while hidden elements will have the 'unfocused' class
+- All classes are done in camel case
+- All react components are capitalized
 
 ### React Practices
 
