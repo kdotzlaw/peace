@@ -3,6 +3,8 @@
 ## Documentation
 Documentation can be found [here](https://docs.google.com/document/d/15RkCXNSL9OtPKiphF9jgUPiGUlcWiMuyPx_aq3dzQ9E/edit?usp=sharing)
 
+Our coding standards can be found [here](codeStandards.md)
+
 ## Website Development   
 The goal of this website redesign was to create an elevated user experience for both Church regulars and newcomers, and integrate Church events into the website. The original website had outdated and nested pages information which was hard for many users to navigate and also caused the website to be inefficient on mobile devices. The redesigned website is dynamic and works equally efficiently on any device. 
 
