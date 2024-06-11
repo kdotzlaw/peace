@@ -1,0 +1,31 @@
+/*
+    CSS for Login component
+ */
+
+.container{
+    /*center div in middle of page, regardless of size*/
+    position: absolute;
+    top: 50%;
+    left:50%;
+    margin-right: -50%;
+    transform: translate(-50%,-50%);
+
+    /**/
+    background-color: #daf1fa;
+    padding: 10px;
+}
+
+
+.input-item{
+    /*Align all input boxes*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+#btn-submit{
+    margin:20px;
+    text-align: center;
+
+}

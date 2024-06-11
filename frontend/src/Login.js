@@ -1,5 +1,7 @@
 import React from 'react';
 import {useState} from "react";
+import "./Login.css";
+
 import ReactDOM from "react-dom/client";
 
 /*
@@ -26,45 +28,55 @@ function Login(){
     }
     //Return and render
     return(
-        <form onSubmit={handleSubmit}>
-            <label>Enter A2Hosted admin username:
-                <input
-                    type="text"
-                    name="username"
-                    value={inputs.username || ""}
-                    onChange={handleChange}
+        <div className="container">
+            <h1>Peace DB Interface</h1>
+            <form onSubmit={handleSubmit} id="form-login">
+                <label>Enter A2Hosted admin username:
+                    <input
+                        className="input-item"
+                        type="text"
+                        name="username"
+                        value={inputs.username || ""}
+                        onChange={handleChange}
 
-                />
-            </label>
-            <label> Enter A2Hosted admin password:
-                <input
-                    type="text"
-                    name="password"
-                    value={inputs.password || ""}
-                    onChange={handleChange}
+                    />
+                </label>
+                <label> Enter A2Hosted admin password:
+                    <input
+                        className="input-item"
+                        type="text"
+                        name="password"
+                        value={inputs.password || ""}
+                        onChange={handleChange}
 
-                />
-            </label>
-            <label> Enter host ip address:
-                <input
-                    type="text"
-                    name="host"
-                    value={inputs.host || ""}
-                    onChange={handleChange}
+                    />
+                </label>
+                <label> Enter host ip address:
+                    <input
+                        className="input-item"
+                        type="text"
+                        name="host"
+                        value={inputs.host || ""}
+                        onChange={handleChange}
 
-                />
-            </label>
-            <label>Enter database name:
+                    />
+                </label>
+                <label>Enter database name:
+                    <input
+                        className="input-item"
+                        type=""
+                        name="db"
+                        value={inputs.db || ""}
+                        onChange={handleChange}
+                    />
+                </label>
                 <input
-                    type=""
-                    name="db"
-                    value={inputs.db || ""}
-                    onChange={handleChange}
-                />
-            </label>
-            <input type="submit"/>
+                    id ="btn-submit"
+                    type="submit"/>
 
-        </form>
+            </form>
+        </div>
+
     )
 }
 export default Login;
