@@ -36,7 +36,8 @@ function Tab({name, focus, id}) {
     }*/
     return (
         <div className={focus ? "homeNavTab " + name + " focused": "homeNavTab " + name + " unfocused"}>
-            <button className="homeNavTabButton" onClick={(event) => switchtab(name, id)}>{name}</button>
+            <button className={focus ? "homeNavTabButton " + name + " focused": "homeNavTabButton " + name + " unfocused"}
+                    onClick={(event) => switchtab(name, id)}>{name}</button>
         </div>
     );
 }
