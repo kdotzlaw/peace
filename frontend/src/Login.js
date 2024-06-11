@@ -13,7 +13,11 @@ function Login(){
     //Define initial state for form variables
     const [inputs, setInputs] = useState({});
 
-    //Handle Change
+    /*
+        handleChange:
+        INPUT: on change event from form input
+        OUTPUT: the value of form input with [name] is changed to [name:value]
+     */
     const handleChange=(event)=>{
         const name = event.target.name;
         const value = event.target.value;
@@ -23,7 +27,7 @@ function Login(){
     //Handle form submit
     const handleSubmit =(event)=>{
         event.preventDefault();
-        //send to api
+        //TODO: send to api here
         alert("Submit");
     }
     //Return and render
