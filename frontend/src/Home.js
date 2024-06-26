@@ -1,3 +1,4 @@
+import TabBody from "./TabBody"
 // hold current tab id
 let current = 0
 
@@ -51,7 +52,7 @@ function HomeBody({name, focus}) {
     }
     return (
         <div className={"homeBody".concat(f)}>
-            <p>This is the home body for {name}</p>
+            <TabBody name={name}></TabBody>
         </div>
     );
 }
