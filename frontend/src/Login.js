@@ -21,18 +21,19 @@ function Login(){
     const handleChange=(event)=>{
         const name = event.target.name;
         const value = event.target.value;
+        //sets inputs for each name to the value with matching name
         setInputs(values=>({...values,[name]:value}));
     }
 
     //Handle form submit
     const handleSubmit =(event)=>{
         event.preventDefault();
-        //TODO: send to api here
+        //TODO: send to api here JSON
         alert("Submit");
     }
     //Return and render
     return(
-        <div className="container">
+        <div id="container" className="focused">
             <h1>Peace DB Interface</h1>
             <form onSubmit={handleSubmit} id="form-login">
                 <label>Enter A2Hosted admin username:
