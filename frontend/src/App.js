@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './static/App.css';
-import { Login } from "./Login.js";
+import Login from "./Login.js";
 import {render} from "@testing-library/react";
 
 class App extends React.Component{
@@ -9,10 +9,7 @@ class App extends React.Component{
     }
   render(){
        return(
-       <div>
             <Login />
-       </div>
-
        );
   }
 }

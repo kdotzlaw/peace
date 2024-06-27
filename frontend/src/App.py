@@ -7,11 +7,12 @@ import db
 - Initialize flask app
 - Initialize JSON
 '''
-app = Flask(__name__, template_folder="../public/templates")
+app = Flask(__name__, template_folder="../templates", static_folder="/static")
 
 
 @app.route("/")
 def init():
+    print("rendering")
     return render_template("login.html")
 
 
