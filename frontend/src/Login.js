@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState} from "react";
-import "./Login.css";
+import "./static/Login.css";
 
 import ReactDOM from "react-dom/client";
 
@@ -25,17 +25,13 @@ function Login(){
         setInputs(values=>({...values,[name]:value}));
     }
 
-    //Handle form submit
-    const handleSubmit =(event)=>{
-        event.preventDefault();
-        //TODO: send to api here JSON
-        alert("Submit");
-    }
+
     //Return and render
     return(
+    <div id="main">
         <div id="container" className="focused">
             <h1>Peace DB Interface</h1>
-            <form onSubmit={handleSubmit} id="form-login">
+            <form id="form-login" action="../login" method="POST" >
                 <label>Enter A2Hosted admin username:
                     <input
                         className="input-item"
@@ -63,7 +59,6 @@ function Login(){
                         name="host"
                         value={inputs.host || ""}
                         onChange={handleChange}
-
                     />
                 </label>
                 <label>Enter database name:
@@ -75,14 +70,14 @@ function Login(){
                         onChange={handleChange}
                     />
                 </label>
-                <input
+               <input
                     className="input-item"
                     id ="btn-submit"
-                    type="submit"/>
-
+                    type="submit"
+               />
             </form>
         </div>
-
+    </div>
     )
 }
-export default Login;
+export { Login};

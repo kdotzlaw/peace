@@ -346,6 +346,22 @@ def getGifts(name):
 
 
 # -----JOBS TABLE-----#
+def init(h, u, p, d):
+    # init cnxn to db
+    try:
+        cnxn = mysql.connect(
+            host=h,
+            user=u,
+            password=p,
+            database=d
+        )
+        print(cnxn)
+        # init cursor (to exe queries)
+        cursor = cnxn.cursor()
+        return [cursor, True]
+    except Exception:
+        print("yikes")
+    return [False]
 
 if __name__ == '__main__':
     username=input("Enter username: ")
