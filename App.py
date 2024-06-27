@@ -1,7 +1,7 @@
 # Frontend <--> Flask API <--> Database
-import flask
-from flask import Flask, render_template, request
-from backend import db
+from flask import Flask, render_template, request, send_from_directory
+# from backend import db
+import os
 
 '''
 - Initialize flask app
@@ -9,11 +9,29 @@ from backend import db
 '''
 app = Flask(__name__)
 
+reactFolder = 'frontend'
+directory = os.getcwd() + f'/{reactFolder}/build/static'
 
-@app.route("/")
-def init():
-    print("rendering")
-    return render_template("login.html")
+'''
+METHOD: index()
+PRE-CONDITION: None.
+POST-CONDITION: Serve user the login.html file.
+'''
+@app.route('/')
+def index():
+    path = os.getcwd() + f'/{reactFolder}/build'
+    return send_from_directory(directory=path, path='index.html')
+
+'''
+METHOD: serve()
+PRE-CONDITION: None.
+POST-CONDITION: Serve the requested file within the static folder.
+'''
+@app.route('/static/<folder>/<file>')
+def serve(folder, file):
+    path = folder + '/' + file
+    return send_from_directory(directory=directory, path=path)
+
 
 
 '''
@@ -22,7 +40,7 @@ PRE-CONDITION: given a JSON HTTP POST request with username, pass, db, host ip
 POST-CONDITION: connection to db is established if successful, prompt re-login if unsuccessful
 '''
 
-
+'''
 @app.route("/login", methods=["POST"])
 def login():
     if request.method == "POST":
@@ -40,6 +58,6 @@ def login():
 
             # resp = make_response(render_template("home.html"))
 
-
+'''
 if __name__ == "__main__":
     app.run(host="localhost", port=3000)

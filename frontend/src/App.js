@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {render} from "@testing-library/react";
 //CSS imports
-import './static/App.css';
+import './App.css';
 //Component imports
 import Login from "./Login.js";
 

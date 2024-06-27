@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState} from "react";
-import "./static/Login.css";
+import "./Login.css";
 
 import ReactDOM from "react-dom/client";
 
