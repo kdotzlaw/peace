@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import './static/App.css';
-import Login from "./Login.js";
 import {render} from "@testing-library/react";
+//CSS imports
+import './static/App.css';
+//Component imports
+import Login from "./Login.js";
 
-class App extends React.Component{
+
+/*class App extends React.Component{
     constructor(props) {
         super(props);
+        console.log("App constructor");
     }
   render(){
        return(
@@ -13,5 +17,17 @@ class App extends React.Component{
        );
   }
 }
-
 export default App;
+*/
+
+class App extends React.Component{
+    render(){
+        return(
+            <div>
+                <Login />
+             </div>
+        );
+    }
+}
+export default App;
+
