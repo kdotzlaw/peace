@@ -1,13 +1,13 @@
 # Frontend <--> Flask API <--> Database
 import flask
 from flask import Flask, render_template, request
-import db
+from backend import db
 
 '''
 - Initialize flask app
 - Initialize JSON
 '''
-app = Flask(__name__, template_folder="../templates", static_folder="/static")
+app = Flask(__name__)
 
 
 @app.route("/")
@@ -42,4 +42,4 @@ def login():
 
 
 if __name__ == "__main__":
-    app.run(host="localhost",port=3000)
+    app.run(host="localhost", port=3000)

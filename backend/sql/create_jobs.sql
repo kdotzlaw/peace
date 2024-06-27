@@ -12,7 +12,7 @@ CREATE TABLE jobs(
 	jLocked BOOLEAN, /*is this locked for specific church members, yes or no*/
 	jLockedCriteria VARCHAR(255), /* if locked, why?*/
 	jFilled BOOLEAN,
-	jActive BOOLEAN, /*if not active, job is considered archived*/
+	jActive BOOLEAN, /*if not active, job is considered flask_test*/
 	jVName VARCHAR(255), /*Volunteer Name*/
 	PRIMARY KEY(jID)
 );
