@@ -24,14 +24,16 @@ paths:
       parameters:
         - name: firstName
           in: query
-          type: string
-          required: true
-          examples: [John]
+          schema:
+            type: string
+            required: true
+            examples: [John]
         - name: lastName
           in: query
-          type: string
-          required: true
-          examples: [Smith]
+          schema:
+            type: string
+            required: true
+            examples: [Smith]
   /volunteers/firstName:
     get:
       summary: Get volunteers by first name
@@ -39,9 +41,57 @@ paths:
       parameters:
         - name: firstName
           in: query
-          type: string
-          required: true
-          examples: [ John]
+          schema:
+            type: string
+            required: true
+            examples: [John]
+  /volunteers/lastName:
+    get:
+      summary: Get volunteers by last name
+      operationId: getVolByLName
+      parameters:
+        - name: lastName
+          in: query
+          schema:
+            type: string
+            required: true
+            examples: [Smith]
+  /volunteers/email:
+    get:
+      summary: Get volunteers by email
+      operationId: getVolByEmail
+      parameters:
+        - name: email
+          in: query
+          schema:
+            type: string
+            required: true
+            examples: [john@smith.com]
+    put:
+      summary: Update volunteers by email
+      operationId: putVolbyEmail
+      parameters:
+        - name: email
+          in: query
+          schema:
+            type: string
+            required: true
+            examples: [john@smith.com]
+        - name: firstName
+          in: query
+          schema:
+            type: string
+            required: false
+        - name: lastName
+          in: query
+          schema:
+            type: string
+            required: false
+        - name: newEmail
+          in: query
+          schema:
+            type: string
+            required: false
 components:
   schemas:
     Query:
